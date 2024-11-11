@@ -1,0 +1,55 @@
+// Model.java
+public class Model {
+    private String data;
+
+    public Model(String data) {
+        this.data = data;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+}
+
+// View.java
+public class View {
+    public void printData(String data) {
+        System.out.println("Data: " + data);
+    }
+}
+
+// Controller.java
+public class Controller {
+    private Model model;
+    private View view;
+
+    public Controller(Model model, View view) {
+        this.model = model;
+        this.view = view;
+    }
+
+    public void updateView() {
+        view.printData(model.getData());
+    }
+
+    public void setData(String data) {
+        model.setData(data);
+    }
+}
+
+// Main.java
+public class Main {
+    public static void main(String[] args) {
+        Model model = new Model("Initial Data");
+        View view = new View();
+        Controller controller = new Controller(model, view);
+
+        controller.updateView();
+        controller.setData("Updated Data");
+        controller.updateView();
+    }
+}
